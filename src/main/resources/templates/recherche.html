@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/recherche}" method="post">
+        <input type="text" name="requete">
+        <input type="submit" value="rechercher">
+    </form>
+    <h1 th:if="${error!=null}" th:text="${error}"></h1>
+    <table th:if="${produits!=null}">
+        <tr>
+            <th>Designation</th>
+            <th>Categorie</th>
+            <th>Prix</th>
+            <th>Qualite</th>
+        </tr>
+        <tr th:each="produit: ${produits}">
+            <td th:text="${produit.getDesignation()}"></td>
+            <td th:text="${produit.getCategorie().getDesignation()}"></td>
+            <td th:text="${produit.getPrix()}"></td>
+            <td th:text="${produit.getQualite()}"></td>
+        </tr>
+    </table>
+</body>
+</html>
