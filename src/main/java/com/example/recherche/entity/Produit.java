@@ -98,12 +98,13 @@ public class Produit {
         {
             if(categorie==null)
             {
+                produits=connexionBase.getProduitRepository().findByCategorieOrderByPrixAsc();
 
             }
             else {
+                produits=connexionBase.getProduitRepository().findByCategorieOrderByPrixAsc(categorie);
 
             }
-            produits=connexionBase.getProduitRepository().findByCategorieOrderByPrixAsc(categorie);
         }
         else if(indice_mot_cles==2)
         {
